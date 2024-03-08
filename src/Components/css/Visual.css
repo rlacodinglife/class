@@ -1,0 +1,23 @@
+section#visual{
+    width: 100%;
+    height: 200px;
+    background: #bad7e9;
+    padding:50px 20px;
+    box-sizing: border-box;
+
+}
+
+h2#visual_title{
+    font-size:24px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    margin-bottom: 12px;
+}
+
+p#visual_text{
+    font-size: 16px;
+    text-align: center;
+    color: white;
+
+}
