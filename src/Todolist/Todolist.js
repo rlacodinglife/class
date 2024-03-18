@@ -19,6 +19,19 @@ export default function Totolist({ category }) {
     /**categoryItem=지금선택된애들에 해당하는애들(매개변수) */
     const categoryItems = getCategoryItems(allTodos, category)
 
+    function getCategoryItems(allTodos, category) {
+        if (category === 'all') {
+            return (
+                allTodos
+            )
+        } else {
+            return (
+                allTodos.filter((item) => (item.status === category))
+            )
+        }
+    }
+
+    
     const updateTodo = (todo) => {
         SetAllTodos((prev) => {
             return (
@@ -48,17 +61,6 @@ export default function Totolist({ category }) {
     }
 
 
-    function getCategoryItems(allTodos, category) {
-        if (category === 'all') {
-            return (
-                allTodos
-            )
-        } else {
-            return (
-                allTodos.filter((item) => (item.status === category))
-            )
-        }
-    }
 
 
 
