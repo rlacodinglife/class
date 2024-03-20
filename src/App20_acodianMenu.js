@@ -11,40 +11,42 @@ function App27_accordionmenu_source() {  // 기본 컴포넌트 구조 (단축�
         { index: 4, name: '고객센터', pathname: '/', subMenuList: [{ index: 0, name: 'Q&A', pathname: '/' }, { index: 1, name: '고객의소리', pathname: '/' }] }
     ]
 
-        const menuWrap = useRef()
-        const menuBtn = useRef()
-        const closebtn = useRef()
-        const grayLayer = useRef()
+    const menuWrap = useRef()
+    const menuBtn = useRef()
+    const closebtn = useRef()
+    const grayLayer = useRef()
 
-        const [selectedIndex,setSelectedIndex]=useState(null)
-
-
-        //  초기설정 useEffect로 시작시 한번만 실행하게한다
-        useEffect(()=>{
-            grayLayer.current.style.display='none'
-            menuWrap.current.style.right='-60vw'
-            menuWrap.current.style.display='none'    
-        },[])
-
-        const menuOpen=()=>{
-            gsap.set('body,html',{overflow:'hidden'})
-            grayLayer.current.style.display='block'
-            menuWrap.current.style.display='block'
-            gsap.to(menuWrap.current,{right:0,duration:0.5,ease:'power1.out'})
-        }
-
-        const menuClose=()=>{
-            grayLayer.current.style.display='none'
-            gsap.to(menuWrap.current,{right:'-60vw',duration:0.6,ease:'power1.out',onComplete:()=>{
-                menuWrap.current.style.display='none'
-                gsap.set('body,html',{overflow:'visible'})
-            }})
-        }
+    const [selectedIndex, setSelectedIndex] = useState(null)
 
 
-        const menuActivateIndex=(index)=>{
-            setSelectedIndex(index)
-        }
+    //  초기설정 useEffect로 시작시 한번만 실행하게한다
+    useEffect(() => {
+        grayLayer.current.style.display = 'none'
+        menuWrap.current.style.right = '-60vw'
+        menuWrap.current.style.display = 'none'
+    }, [])
+
+    const menuOpen = () => {
+        gsap.set('body,html', { overflow: 'hidden' })
+        grayLayer.current.style.display = 'block'
+        menuWrap.current.style.display = 'block'
+        gsap.to(menuWrap.current, { right: 0, duration: 0.5, ease: 'power1.out' })
+    }
+
+    const menuClose = () => {
+        grayLayer.current.style.display = 'none'
+        gsap.to(menuWrap.current, {
+            right: '-60vw', duration: 0.6, ease: 'power1.out', onComplete: () => {
+                menuWrap.current.style.display = 'none'
+                gsap.set('body,html', { overflow: 'visible' })
+            }
+        })
+    }
+
+
+    const menuActivateIndex = (index) => {
+        setSelectedIndex(index)
+    }
 
 
 
@@ -66,7 +68,7 @@ function App27_accordionmenu_source() {  // 기본 컴포넌트 구조 (단축�
                         {
                             mainMenuList.map((item) => {
                                 return (
-                                    <li className={item.index===selectedIndex && styles.selected} style={item.index===selectedIndex ? {height:55+(55*item.subMenuList.length)} : {height:55}} onClick={()=>{
+                                    <li className={item.index === selectedIndex && styles.selected} style={item.index === selectedIndex ? { height: 55 + (55 * item.subMenuList.length) } : { height: 55 }} onClick={() => {
                                         menuActivateIndex(item.index)
                                     }}>
                                         {/* 서브메뉴의 유무를 가르는것을 여기서 구분해준다 */}
